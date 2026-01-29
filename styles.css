@@ -5,106 +5,133 @@
     font-family: 'Segoe UI', Tahoma, sans-serif;
 }
 
-body {
-    background-color: #f4f6f8;
-    color: #333;
-}
-
 /* CABECERA */
-header {
+.hero {
     width: 100%;
     height: 300px;
-    background-image: url("https://images.unsplash.com/photo-1522202176988-66273c2fd55f");
-    background-size: cover;
-    background-position: center;
+    background: linear-gradient(
+        rgba(0,0,0,0.55),
+        rgba(0,0,0,0.55)
+    ),
+    linear-gradient(120deg, #2c3e50, #3498db);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    opacity: 0.9;
 }
 
 /* MENÚ */
-nav {
+.main-nav {
     background-color: #ffffff;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-nav ul {
+.main-nav ul {
+    list-style: none;
     display: flex;
     justify-content: center;
-    list-style: none;
 }
 
-nav ul li {
-    margin: 20px;
+.main-nav li {
+    margin: 0 20px;
 }
 
-nav ul li a {
+.main-nav a {
+    display: block;
+    padding: 15px 0;
     text-decoration: none;
     color: #333;
     font-weight: 600;
-    transition: color 0.3s;
 }
 
-nav ul li a:hover {
-    color: #007BFF;
+.main-nav a:hover {
+    color: #3498db;
 }
 
-/* SECCIÓN PRINCIPAL */
-.seccion {
+/* SECCIÓN TARJETAS */
+.cards-section {
     display: flex;
-    justify-content: space-around;
-    padding: 60px 10%;
+    justify-content: center;
     gap: 30px;
+    padding: 60px 20px;
+    background-color: #f4f6f8;
 }
 
 .card {
-    background-color: white;
-    width: 30%;
-    border-radius: 10px;
+    background: white;
+    width: 300px;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
     text-align: center;
-    transition: transform 0.3s;
+    transition: transform 0.3s ease;
 }
 
 .card:hover {
     transform: translateY(-8px);
 }
 
-.card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
+.card-image {
+    height: 180px;
 }
 
-.card h2 {
+/* IMÁGENES CREADAS CON CSS */
+.formacion {
+    background: linear-gradient(135deg, #1abc9c, #16a085);
+}
+
+.servicios {
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+}
+
+.blog {
+    background: linear-gradient(135deg, #9b59b6, #8e44ad);
+}
+
+.card h3 {
     padding: 20px;
-    font-size: 22px;
+    font-size: 1.3rem;
+    color: #333;
 }
 
-/* PIE DE PÁGINA */
-footer {
+/* FOOTER */
+.footer {
     background-color: #000;
-    color: #fff;
+    color: white;
     text-align: center;
-    padding: 30px 10px;
-    margin-top: 40px;
+    padding: 30px 15px;
 }
 
-footer p {
-    margin: 8px 0;
-    font-size: 14px;
+.footer hr {
+    margin: 15px auto;
+    width: 60%;
+    border: 1px solid #444;
 }
 
-header {
-    position: relative;
-    width: 100%;
-    height: 300px;
-    background-image: url("img/cabecera-formacion.png");
-    background-size: cover;
-    background-position: center;
+.footer p {
+    margin: 5px 0;
 }
 
-header::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.25);
+.copyright {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .cards-section {
+        flex-direction: column;
+        align-items: center;
+    }
 }
