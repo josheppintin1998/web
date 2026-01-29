@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+/* CABECERA */
+.hero {
+    width: 100%;
+    height: 300px;
+    background: linear-gradient(
+        rgba(0,0,0,0.55),
+        rgba(0,0,0,0.55)
+    ),
+    linear-gradient(120deg, #2c3e50, #3498db);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* MENÚ */
+.main-nav {
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+.main-nav li {
+    margin: 0 20px;
+}
+
+.main-nav a {
+    display: block;
+    padding: 15px 0;
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+}
+
+.main-nav a:hover {
+    color: #3498db;
+}
+
+/* SECCIÓN TARJETAS */
+.cards-section {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 60px 20px;
+    background-color: #f4f6f8;
+}
+
+.card {
+    background: white;
+    width: 300px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+}
+
+.card-image {
+    height: 180px;
+}
+
+/* IMÁGENES CREADAS CON CSS */
+.formacion {
+    background: linear-gradient(135deg, #1abc9c, #16a085);
+}
+
+.servicios {
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+}
+
+.blog {
+    background: linear-gradient(135deg, #9b59b6, #8e44ad);
+}
+
+.card h3 {
+    padding: 20px;
+    font-size: 1.3rem;
+    color: #333;
+}
+
+/* FOOTER */
+.footer {
+    background-color: #000;
+    color: white;
+    text-align: center;
+    padding: 30px 15px;
+}
+
+.footer hr {
+    margin: 15px auto;
+    width: 60%;
+    border: 1px solid #444;
+}
+
+.footer p {
+    margin: 5px 0;
+}
+
+.copyright {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .cards-section {
+        flex-direction: column;
+        align-items: center;
+    }
+}
