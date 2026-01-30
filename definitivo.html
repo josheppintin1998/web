@@ -1,0 +1,113 @@
+<script>
+const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d");
+const turnSound = document.getElementById("turnSound");
+
+const box = 20;
+let snake = [{ x: 300, y: 200 }];
+let direction = null; // No se mueve hasta que presionas flecha
+
+let food = randomFood();
+let score = 0;
+let record = localStorage.getItem("snakeRecord") || 0;
+document.getElementById("record").textContent = record;
+
+let game = null;
+
+document.addEventListener("keydown", changeDirection);
+
+function randomFood() {
+    return {
+        x: Math.floor(Math.random() * (canvas.width / box)) * box,
+        y: Math.floor(Math.random() * (canvas.height / box)) * box
+    };
+}
+
+function startGame() {
+    if (!game) {
+        game = setInterval(drawGame, 100);
+    }
+}
+
+function changeDirection(event) {
+    const key = event.key;
+
+    if (key === "ArrowLeft" && direction !== "RIGHT") {
+        direction = "LEFT";
+        turnSound.currentTime = 0;
+        turnSound.play();
+        startGame();
+    } else if (key === "ArrowUp" && direction !== "DOWN") {
+        direction = "UP";
+        turnSound.currentTime = 0;
+        turnSound.play();
+        startGame();
+    } else if (key === "ArrowRight" && direction !== "LEFT") {
+        direction = "RIGHT";
+        turnSound.currentTime = 0;
+        turnSound.play();
+        startGame();
+    } else if (key === "ArrowDown" && direction !== "UP") {
+        direction = "DOWN";
+        turnSound.currentTime = 0;
+        turnSound.play();
+        startGame();
+    }
+}
+
+function drawGame() {
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Dibujar comida
+    ctx.fillStyle = "red";
+    ctx.fillRect(food.x, food.y, box, box);
+
+    // Dibujar serpiente
+    ctx.fillStyle = "lime";
+    snake.forEach(part => ctx.fillRect(part.x, part.y, box, box));
+
+    let headX = snake[0].x;
+    let headY = snake[0].y;
+
+    if (direction === "LEFT") headX -= box;
+    if (direction === "UP") headY -= box;
+    if (direction === "RIGHT") headX += box;
+    if (direction === "DOWN") headY += box;
+
+    const newHead = { x: headX, y: headY };
+
+    // Colisiones con paredes o cuerpo
+    if (
+        headX < 0 || headY < 0 ||
+        headX >= canvas.width || headY >= canvas.height ||
+        snake.some(part => part.x === headX && part.y === headY)
+    ) {
+        clearInterval(game);
+        game = null;
+        setTimeout(() => {
+            alert("💀 Game Over\nPuntaje: " + score);
+            location.reload();
+        }, 100);
+        return;
+    }
+
+    // Comer comida
+    if (headX === food.x && headY === food.y) {
+        score++;
+        document.getElementById("score").textContent = score;
+
+        if (score > record) {
+            record = score;
+            localStorage.setItem("snakeRecord", record);
+            document.getElementById("record").textContent = record;
+        }
+
+        food = randomFood();
+    } else {
+        snake.pop();
+    }
+
+    snake.unshift(newHead);
+}
+</script>
